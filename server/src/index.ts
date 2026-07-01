@@ -19,7 +19,10 @@ const allowedOrigins = [
   "https://food-delivery-iota-five.vercel.app",
   "https://food-one-peach.vercel.app/",
   "http://localhost:3000",   
-  "http://localhost:8000"  
+  "http://localhost:8000",
+  "https://food-1-b08e.onrender.com",
+  "https://food-woad-one-15.vercel.app/",
+
 ];
 
 app.use(cors({
