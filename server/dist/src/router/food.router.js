@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.foodRouter = void 0;
+const express_1 = require("express");
+const create_new_food_controller_1 = require("../controller/foods/create-new-food.controller");
+const delete_food_controller_1 = require("../controller/foods/delete-food.controller");
+const update_food_controller_1 = require("../controller/foods/update-food.controller");
+const get_food_by_id_controller_1 = require("../controller/foods/get-food-by-id.controller");
+const get_all_food_controller_1 = require("../controller/foods/get-all-food.controller");
+const user_schema_1 = require("../schema/user.schema");
+const authentication_1 = require("../middlewares/authentication");
+const authorization_1 = require("../middlewares/authorization");
+exports.foodRouter = (0, express_1.Router)();
+exports.foodRouter.post("/create-food-item", create_new_food_controller_1.createFoodItem);
+exports.foodRouter.delete("/delete-food/:foodId", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), delete_food_controller_1.deleteFood);
+exports.foodRouter.patch("/update-food/:foodId", update_food_controller_1.updateFood);
+exports.foodRouter.get("/get-food-by-id/:foodId", get_food_by_id_controller_1.getFoodByIdGet);
+exports.foodRouter.get("/get-all-food", get_all_food_controller_1.getAllFood);

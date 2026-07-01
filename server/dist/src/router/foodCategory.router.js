@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.foodCategoryRouter = void 0;
+const express_1 = require("express");
+const category_1 = require("../controller/category");
+const update_category_controller_1 = require("../controller/category/update-category.controller");
+const user_schema_1 = require("../schema/user.schema");
+const authentication_1 = require("../middlewares/authentication");
+const authorization_1 = require("../middlewares/authorization");
+exports.foodCategoryRouter = (0, express_1.Router)();
+exports.foodCategoryRouter.post("/create-food-category", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), category_1.createFoodCategory);
+exports.foodCategoryRouter.get("/get-category/:categoryId", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), category_1.getFoodCategoryById);
+exports.foodCategoryRouter.get("/get-all-foods", category_1.getAllFoodCategory);
+exports.foodCategoryRouter.patch("/update-category/:categoryId", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), update_category_controller_1.updateCategory);
+exports.foodCategoryRouter.delete("/delete-category/:categoryId", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), category_1.deleteCategory);
+exports.foodCategoryRouter.get("/with-count", category_1.getCategoryWithCount);

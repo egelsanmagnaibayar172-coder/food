@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.orderRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("../controller");
+const controller_2 = require("../controller");
+const getBy_id_order_controller_1 = require("../controller/order/getBy-id-order.controller");
+const many_order_update_controller_1 = require("../controller/order/many-order-update.controller");
+const authentication_1 = require("../middlewares/authentication");
+const user_schema_1 = require("../schema/user.schema");
+const authorization_1 = require("../middlewares/authorization");
+exports.orderRouter = (0, express_1.Router)();
+exports.orderRouter.post("/create-order", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.USER]), controller_1.createOrder);
+exports.orderRouter.get("/all-order", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.USER]), controller_2.getAllOrder);
+exports.orderRouter.get("/my-orders", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.USER, user_schema_1.UserRole.ADMIN]), getBy_id_order_controller_1.getOrderByIdGet);
+exports.orderRouter.patch("/many-order-update", authentication_1.authentication, (0, authorization_1.authorization)([user_schema_1.UserRole.ADMIN]), many_order_update_controller_1.manyOrderUpdate);
+exports.orderRouter.patch("/one-order-update/:orderId", authentication_1.authentication, controller_1.oneOrderUpdate);
