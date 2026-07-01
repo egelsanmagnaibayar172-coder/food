@@ -1,4 +1,4 @@
-import { models, model, Schema } from "mongoose";
+import { models, model, Schema, Document } from "mongoose";
  
 export enum UserRole {
   USER = "USER",
