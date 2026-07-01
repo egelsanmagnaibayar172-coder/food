@@ -17,13 +17,12 @@ const allowedOrigins = [
   "https://food-delivery-s682.onrender.com",
   "https://food-delivery-6d8u.onrender.com",
   "https://food-delivery-iota-five.vercel.app",
-  "https://food-one-peach.vercel.app/",
-  "http://localhost:3000",   
+  "https://food-one-peach.vercel.app",
+  "http://localhost:3000",
   "http://localhost:8000",
   "https://food-1-b08e.onrender.com",
   "https://food-rose-seven.vercel.app",
-  "https://food-woad-one-15.vercel.app/",
-
+  "https://food-woad-one-15.vercel.app"
 ];
 
 app.use(cors({
